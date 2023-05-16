@@ -9,13 +9,13 @@ try {
     $cert = Get-ChildItem -Path cert:\LocalMachine\$certstore -Recurse | Where-Object {$_.Thumbprint -eq $thumbprint}
 } catch {
     Write-Output "CRITICAL - Could not retrieve certificates."
-    $returnCode = 3
+    $returnCode = 2
     exit ($returnCode)
 }
 
 if ($cert -eq $null) {
     Write-Output "CRITICAL - No certificate found with Thumbprint $thumbprint"
-    $returnCode = 3
+    $returnCode = 2
     exit ($returnCode)
 }
 
